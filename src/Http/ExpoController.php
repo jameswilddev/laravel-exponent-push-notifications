@@ -55,6 +55,7 @@ class ExpoController extends Controller
         try {
             $this->expoChannel->expo->subscribe($interest, $token);
         } catch (\Exception $e) {
+            report($e);
             return JsonResponse::create([
                 'status'    => 'failed',
                 'error'     =>  [
@@ -98,6 +99,7 @@ class ExpoController extends Controller
         try {
             $deleted = $this->expoChannel->expo->unsubscribe($interest, $token);
         } catch (\Exception $e) {
+            report($e);
             return JsonResponse::create([
                 'status'    => 'failed',
                 'error'     =>  [
